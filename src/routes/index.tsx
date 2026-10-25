@@ -76,21 +76,22 @@ function Home() {
           </Reveal>
           <Reveal delay={400}>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/projets" className="group inline-flex items-center gap-2 rounded-full bg-gradient-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105">
+              <Link to="/projets" className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-gradient-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105">
                 {t({ fr: "Voir mes projets", en: "See my projects" })}
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <Link to="/contact" className="glass rounded-full px-6 py-3 font-semibold transition-colors hover:bg-accent">
+              <Link to="/contact" className="glass whitespace-nowrap rounded-full px-6 py-3 font-semibold transition-colors hover:bg-accent">
                 {t({ fr: "Me contacter", en: "Contact me" })}
               </Link>
             </div>
           </Reveal>
         </div>
 
-        <Reveal delay={300} className="relative mx-auto aspect-square w-full max-w-sm">
+        <Reveal delay={300} className="flex w-full justify-center">
+          <div className="relative aspect-square w-full max-w-[22rem]">
           <div className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-primary/30" />
           <div className="absolute inset-8 rounded-full bg-gradient-primary opacity-20 blur-3xl" />
-          <div className="glass absolute inset-12 flex animate-float flex-col justify-center rounded-3xl p-6 font-mono text-sm shadow-glow">
+          <div className="glass absolute inset-[12%] flex animate-float flex-col justify-center rounded-3xl p-6 font-mono text-sm shadow-glow">
             <p className="text-muted-foreground">// djamal.ts</p>
             <p><span className="text-nebula">const</span> dev = {"{"}</p>
             <p className="pl-4">name: <span className="text-gold">"Djamal"</span>,</p>
@@ -98,6 +99,7 @@ function Home() {
             <p className="pl-4">stack: <span className="text-gold">"full"</span>,</p>
             <p className="pl-4">talent: <span className="text-primary-glow">Infinity</span></p>
             <p>{"}"};</p>
+          </div>
           </div>
         </Reveal>
       </section>
