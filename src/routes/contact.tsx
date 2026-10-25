@@ -77,7 +77,7 @@ function Contact() {
             <div>
               <label htmlFor="message" className="mb-2 block text-sm text-muted-foreground">Message</label>
               <textarea id="message" name="message" rows={5} maxLength={1000} className={field} />
-              {errors.message && <p className="mt-1 text-sm text-destructive">{errors.message}</p>}
+              {errors["message"] && <p className="mt-1 text-sm text-destructive">{errors["message"]}</p>}
             </div>
             <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary py-3 font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]">
               {t({ fr: "Envoyer", en: "Send" })} <Send className="size-4" />

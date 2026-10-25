@@ -24,7 +24,7 @@ function Typed({ words }: { words: string[] }) {
   const [n, setN] = useState(0);
   const [del, setDel] = useState(false);
   useEffect(() => {
-    const w = words[i % words.length];
+    const w = words[i % words.length] ?? "";
     const id = setTimeout(() => {
       if (!del && n === w.length) return setDel(true);
       if (del && n === 0) { setDel(false); return setI(i + 1); }
@@ -34,7 +34,7 @@ function Typed({ words }: { words: string[] }) {
   }, [n, del, i, words]);
   return (
     <span className="font-mono text-primary-glow">
-      {words[i % words.length].slice(0, n)}
+      {(words[i % words.length] ?? "").slice(0, n)}
       <span className="animate-blink">_</span>
     </span>
   );

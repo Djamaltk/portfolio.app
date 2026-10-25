@@ -6,7 +6,7 @@ export function Reveal({ children, delay = 0, className = "" }: { children: Reac
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { el.classList.add("is-visible"); io.disconnect(); } },
+      ([e]) => { if (e?.isIntersecting) { el.classList.add("is-visible"); io.disconnect(); } },
       { threshold: 0.12 },
     );
     io.observe(el);
