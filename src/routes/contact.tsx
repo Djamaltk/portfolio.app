@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, Mail } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { Reveal, SectionTitle } from "@/components/site/Reveal";
 
@@ -18,6 +18,8 @@ export const Route = createFileRoute("/contact")({
   }),
   component: Contact,
 });
+
+const EMAIL = "Djamaltoko256@gmail.com";
 
 function Contact() {
   const { t } = useLang();
@@ -39,6 +41,9 @@ function Contact() {
       return setErrors(errs);
     }
     setErrors({});
+    const subject = encodeURIComponent(`Portfolio — ${r.data.name}`);
+    const body = encodeURIComponent(`${r.data.message}\n\n— ${r.data.name} (${r.data.email})`);
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -47,11 +52,16 @@ function Contact() {
   return (
     <div className="mx-auto max-w-2xl px-6">
       <SectionTitle kicker="Contact" title={t({ fr: "Travaillons ensemble", en: "Let's work together" })} />
+      <Reveal className="mb-6">
+        <a href={`mailto:${EMAIL}`} className="glass inline-flex items-center gap-3 rounded-full px-5 py-3 transition-all hover:shadow-glow">
+          <Mail className="size-4 text-gold" /> <span className="font-mono text-sm">{EMAIL}</span>
+        </a>
+      </Reveal>
       <Reveal className="glass rounded-3xl p-8">
         {sent ? (
           <div className="py-10 text-center">
             <CheckCircle2 className="mx-auto size-12 text-primary-glow" />
-            <p className="mt-4 text-xl font-semibold">{t({ fr: "Merci pour votre message !", en: "Thanks for your message!" })}</p>
+            <p className="mt-4 text-xl font-semibold">{t({ fr: "Merci ! Votre messagerie s'ouvre pour envoyer le message.", en: "Thanks! Your email app is opening to send the message." })}</p>
           </div>
         ) : (
           <form onSubmit={submit} noValidate className="space-y-5">
